@@ -2,67 +2,58 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>RobotKarel</title>
-  <base href="/karel/" />
-  <link rel="stylesheet" href="css/app.css" />
-  <link href="RobotKarel.styles.css" rel="stylesheet" />
-  <link rel="icon" type="image/png" href="favicon.png" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RobotKarel</title>
+    <base href="/karel/" />
+    <link href="_content/Microsoft.FluentUI.AspNetCore.Components/css/reboot.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link href="RobotKarel.styles.css" rel="stylesheet" />
+    <link rel="icon" type="image/png" href="favicon.png" />
 </head>
 
 <body>
-  <div id="app">
-    <svg viewBox="0 0 40 40" class="loading-progress">
-      <g transform="rotate(@GetRotationAngle(),20,20)">
-        <!-- Tělo robota -->
-        <rect x="12" y="11" width="16" height="20" fill="gray" stroke="black" stroke-width="2" />
-        <!-- Hlava robota -->
-        <rect x="15" y="5" width="10" height="5" fill="silver" stroke="black" stroke-width="1" />
-        <!-- Oči -->
-        <circle cx="17" cy="7" r="1" fill="black" />
-        <circle cx="23" cy="7" r="1" fill="black" />
-        <!-- Anténa -->
-        <line x1="20" y1="5" x2="20" y2="2" stroke="black" stroke-width="1" />
-        <!-- Ruce -->
-        <line x1="5" y1="16" x2="12" y2="16" stroke="black" stroke-width="1" />
-        <line x1="28" y1="16" x2="35" y2="16" stroke="black" stroke-width="1" />
-        <!-- Nohy -->
-        <line x1="15" y1="30" x2="15" y2="39" stroke="black" stroke-width="1" />
-        <line x1="25" y1="30" x2="25" y2="39" stroke="black" stroke-width="1" />
-      </g>
-    </svg>
+    <div id="app">
+        <svg viewBox="0 0 40 40" class="loading-progress">
+            <g transform="rotate(@GetRotationAngle(),20,20)">
+                <!-- Tělo robota -->
+                <rect x="12" y="11" width="16" height="20" fill="gray" stroke="black" stroke-width="2" />
+                <!-- Hlava robota -->
+                <rect x="15" y="5" width="10" height="5" fill="silver" stroke="black" stroke-width="1" />
+                <!-- Oči -->
+                <circle cx="17" cy="7" r="1" fill="black" />
+                <circle cx="23" cy="7" r="1" fill="black" />
+                <!-- Anténa -->
+                <line x1="20" y1="5" x2="20" y2="2" stroke="black" stroke-width="1" />
+                <!-- Ruce -->
+                <line x1="5" y1="16" x2="12" y2="16" stroke="black" stroke-width="1" />
+                <line x1="28" y1="16" x2="35" y2="16" stroke="black" stroke-width="1" />
+                <!-- Nohy -->
+                <line x1="15" y1="30" x2="15" y2="39" stroke="black" stroke-width="1" />
+                <line x1="25" y1="30" x2="25" y2="39" stroke="black" stroke-width="1" />
+            </g>
+        </svg>
 
-    <!--<svg class="loading-progress">
+        <!--<svg class="loading-progress">
             <circle r="40%" cx="50%" cy="50%" />
             <circle r="40%" cx="50%" cy="50%" />
-    </svg>-->
-    <div class="loading-progress-text"></div>
+        </svg>-->
+        <div class="loading-progress-text"></div>
 
-    <h1 class="loading-title">Robot Karel</h1>
-  </div>
+        <h1 class="loading-title">Robot Karel</h1>
+    </div>
 
-  <div id="blazor-error-ui">
-    An unhandled error has occurred.
-    <a href="" class="reload">Reload</a>
-    <a class="dismiss">🗙</a>
-  </div>
-
-  <!-- Blazor WebAssembly -->
-  <script src="_framework/blazor.webassembly.js"></script>
-
-  <!-- Načtení Monaco loaderu -->
-  <script src="_content/BlazorMonaco/lib/monaco-editor/min/vs/loader.js"></script>
-  <script>
-    require.config({ paths: { 'vs': '/karel/_content/BlazorMonaco/lib/monaco-editor/min/vs' } });
-    window.MonacoEnvironment = { baseUrl: '/karel/_content/BlazorMonaco/lib/monaco-editor/min' };
-  </script>
-  <!-- Načtení Monaco editoru -->
-  <script src="_content/BlazorMonaco/lib/monaco-editor/min/vs/editor/editor.main.js"></script>
-  <!-- Nyní načteme BlazorMonaco jsInterop, který využívá global monaco -->
-  <script src="_content/BlazorMonaco/jsInterop.js"></script>
-  <script src="monaco-extensions.js"></script>
-  <script src="./js/karel.js"></script>
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script src="monaco-extensions.js"></script>
+    <script src="_content/BlazorMonaco/jsInterop.js"></script>
+    <script src="_content/BlazorMonaco/lib/monaco-editor/min/vs/loader.js"></script>
+    <script src="_content/BlazorMonaco/lib/monaco-editor/min/vs/editor/editor.main.js"></script>
+    <script src="js/karel.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>1. Základní příkazy</h1>
+    <p>
+        <strong>Karel</strong> je malý robot žijící na dvourozměrné mřížce. Umí se pohybovat, otáčet a manipulovat s tzv. <em>značkami</em> (beepery).
+        V našem prostředí se obvykle vykonávají krátké programy psané ve speciálním jazyce Karla. Cílem je na základě několika jednoduchých
+        příkazů a řídicích struktur vyřešit zadanou úlohu (např. obejít překážky, posbírat značky atd.).
+    </p>
+    <hr>
+    <h2>1.1 Pohyb a otáčení</h2>
+    <ol>
+        <li>
+            <p><strong>KROK</strong></p>
+            <ul>
+                <li>Posune Karla o jedno pole vpřed (směrem, kam je otočen).</li>
+                <li>Pokud je před ním zeď nebo okraj mapy, pohyb se neprovede a vyvolá se chyba.</li>
+            </ul>
+        </li>
+        <li>
+            <p><strong>VLEVO</strong></p>
+            <ul>
+                <li>Otočí Karla vlevo (o 90 stupňů).</li>
+            </ul>
+        </li>
+    </ol>
+    <hr>
+    <h2>1.2 Manipulace se značkami (beepery)</h2>
+    <ol>
+        <li>
+            <p><strong>POLOŽ</strong></p>
+            <ul>
+                <li>Položí značku na aktuální pole (pokud má Karel nějakou „u sebe&quot;).</li>
+            </ul>
+        </li>
+        <li>
+            <p><strong>ZVEDNI</strong></p>
+            <ul>
+                <li>Zvedne značku z aktuálního pole (pokud tam nějaká je).</li>
+            </ul>
+        </li>
+    </ol>
+    <p><em>(Značky jsou drobné předměty na poli, které Karel může sbírat nebo pokládat. Často se jim říká „beepery&quot;.)</em></p>
+    <hr>
+    <h2>1.3. Příklad základního kódu</h2>
+    <p>Základní blok kódu Karla může vypadat takto:</p>
+<pre><code><span class="hljs-attribute">KROK</span>
+KROK
+VLEVO
+POLOŽ
+ZVEDNI
+</code></pre><ul>
+        <li>Karel udělá dva kroky vpřed, otočí se vlevo, položí značku a vzápětí ji zvedne.</li>
+        <li>Vše se vyhodnotí nad mapou, kde se kontroluje, jestli Karel nenarazí do zdi a zda na poli byla značka, kterou je možné zvednout.</li>
+    </ul>
+</body>
+</html>

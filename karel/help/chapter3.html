@@ -1,0 +1,72 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>3. Definice procedur (podprogramů)</h1>
+    <p>
+        Procedury v Karlovi (někdy nazývané také <em>podprogramy</em>) umožňují <strong>seskupit více příkazů</strong> do jednoho pojmenovaného celku.
+        Ten pak můžete <strong>opakovaně volat</strong>. To je užitečné, když se v programu často opakuje stejná série příkazů.
+    </p>
+    <h2>3.1 Základní příklad</h2>
+<pre><code><span class="hljs-attribute">PROCEDURA</span> OTOC_SE {
+    <span class="hljs-attribute">VLEVO</span>
+    VLEVO
+}
+</code></pre><ul>
+        <li>Vytváří proceduru s názvem <code>OTOC_SE</code>.</li>
+        <li>Když se tato procedura zavolá, Karel provede <strong>dva příkazy <code>VLEVO</code></strong> a tím se otočí o 180°.</li>
+    </ul>
+    <hr>
+    <h2>3.2 Volání procedury</h2>
+    <p>Po definici lze proceduru volat jako běžný příkaz:</p>
+<pre><code><span class="hljs-attribute">KROK</span>
+OTOC_SE
+KROK
+</code></pre><ul>
+        <li>Karel udělá krok vpřed, zavolá proceduru <code>OTOC_SE</code> (otočí se o 180°) a udělá další krok.</li>
+    </ul>
+    <hr>
+    <h2>3.3 Struktura definice procedury</h2>
+    <p>Syntaxe definice procedury vypadá  takto:</p>
+<pre><code>PROCEDURA <span class="hljs-params">&lt;jméno&gt;</span> {
+    <span class="hljs-comment">// Blok příkazů</span>
+}
+</code></pre><ul>
+        <li><code>PROCEDURA</code> je klíčové slovo pro definici.</li>
+        <li><code>&lt;jméno&gt;</code> je identifikátor procedury (např. <code>OTOC_SE</code>, <code>POZBIREJ_VSE</code>, ...).</li>
+        <li>Blok obsahuje posloupnost příkazů Karla (KROK, VLEVO, POLOZ, atd.).</li>
+    </ul>
+    <hr>
+    <h2>3.4 Ukázkový delší příklad</h2>
+<pre><code>PROCEDURA <span class="hljs-keyword">OTOC_SE</span> {
+    VLEVO
+    VLEVO
+}
+
+<span class="hljs-keyword">PROCEDURA</span> <span class="hljs-keyword">OBKROKNI</span> {
+    KROK
+    VLEVO
+    KROK
+    VLEVO
+}
+
+    <span class="hljs-keyword">OPAKUJ</span> 2 {
+    OBKROKNI
+    OTOC_SE
+  }
+</code></pre><ul>
+        <li>Definujeme dvě procedury: <code>OTOC_SE</code> a <code>OBKROKNI</code>.</li>
+        <li>
+            V hlavním programu se dvakrát opakuje volání:<ol>
+                <li><code>OBKROKNI</code> (tj. krok, vlevo, krok, vlevo)</li>
+                <li><code>OTOC_SE</code> (otočení o 180°)</li>
+            </ol>
+        </li>
+    </ul>
+    <p>Takto se kód stává <strong>přehlednějším</strong>. Kdyby se tytéž příkazy opakovaly v programu vícekrát, stačí je vepsat do procedury a volat ji podle potřeby.</p>
+
+</body>
+</html>

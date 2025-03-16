@@ -1,0 +1,146 @@
+@import '_content/Microsoft.FluentUI.AspNetCore.Components/Microsoft.FluentUI.AspNetCore.Components.n2s0c9bbw5.bundle.scp.css';
+
+/* /Components/KarelArea.razor.rz.scp.css */
+/* Obalový element, který vyplní dostupný prostor a vycentruje KarelArea */
+.karel-area-wrapper[b-ivhwe5q2h0] {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--neutral-layer-4);
+}
+
+.karel-area[b-ivhwe5q2h0] {
+    /*zoom: 150%;*/
+    /*transform: scale(1.5);*/
+    display: flex;
+    flex-direction: column;
+    /*padding: 20px;*/
+    background: var(--neutral-layer-4);
+    width: 100%;
+    /*max-width: 600px;*/ /* maximální šířka dle potřeby */
+    /*height: calc(100% - 1px);*/
+}
+
+/*.karel-area2 {
+    width: 100%;
+    max-width: 600px; 
+    aspect-ratio: 1 / 1; 
+    background: var(--neutral-layer-4);
+    padding: 20px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+*/
+.line[b-ivhwe5q2h0] {
+    display: flex;
+
+}
+
+/* Řádky se roztahují rovnoměrně */
+.row[b-ivhwe5q2h0] {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    /*flex: 1;*/
+}
+
+/* Buňky se roztáhnou, zachovávají si čtvercový tvar a vycentrují obsah */
+.cell[b-ivhwe5q2h0] {
+    /*flex: 1;*/
+    width: 40px;
+    height: 40px;
+    border: 1px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /*aspect-ratio: 1 / 1;*/
+    font-weight: bold;
+    font-size: 1.2rem;
+    background-color: whitesmoke;
+}
+
+.karel-cell[b-ivhwe5q2h0] {
+    background-color: lightblue;
+}
+/* /Layout/MainLayout.razor.rz.scp.css */
+.page[b-8qgcmiload] {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+main[b-8qgcmiload] {
+    flex: 1;
+}
+
+.sidebar[b-8qgcmiload] {
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+}
+
+.top-row[b-8qgcmiload] {
+    background-color: #f7f7f7;
+    border-bottom: 1px solid #d6d5d5;
+    justify-content: flex-end;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+}
+
+    .top-row[b-8qgcmiload]  a, .top-row[b-8qgcmiload]  .btn-link {
+        white-space: nowrap;
+        margin-left: 1.5rem;
+        text-decoration: none;
+    }
+
+    .top-row[b-8qgcmiload]  a:hover, .top-row[b-8qgcmiload]  .btn-link:hover {
+        text-decoration: underline;
+    }
+
+    .top-row[b-8qgcmiload]  a:first-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+@media (max-width: 640.98px) {
+    .top-row[b-8qgcmiload] {
+        justify-content: space-between;
+    }
+
+    .top-row[b-8qgcmiload]  a, .top-row[b-8qgcmiload]  .btn-link {
+        margin-left: 0;
+    }
+}
+
+@media (min-width: 641px) {
+    .page[b-8qgcmiload] {
+        flex-direction: row;
+    }
+
+    .sidebar[b-8qgcmiload] {
+        width: 250px;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+    }
+
+    .top-row[b-8qgcmiload] {
+        position: sticky;
+        top: 0;
+        z-index: 1;
+    }
+
+    .top-row.auth[b-8qgcmiload]  a:first-child {
+        flex: 1;
+        text-align: right;
+        width: 0;
+    }
+
+    .top-row[b-8qgcmiload], article[b-8qgcmiload] {
+        padding-left: 2rem !important;
+        padding-right: 1.5rem !important;
+    }
+}

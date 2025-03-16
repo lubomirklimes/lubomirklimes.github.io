@@ -1,0 +1,90 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <h1>2. Řídicí struktury</h1>
+    <p>Karelův jazyk umožňuje používat <strong>cykly</strong> (opakování) a <strong>podmínky</strong>, aby programy byly chytřejší a dokázaly reagovat na situaci ve světě.</p>
+    <h2>2.1 Cykly</h2>
+    <h3><strong>OPAKUJ</strong> (pevný počet opakování)</h3>
+    <p>Syntaxe vypadá takto:</p>
+<pre><code><span class="hljs-attribute">OPAKUJ</span> <span class="hljs-number">5</span> {
+    <span class="hljs-attribute">KROK</span>
+    VLEVO
+}
+</code></pre><ul>
+        <li>Provede <strong>5×</strong> blok příkazů uvnitř složených závorek.</li>
+        <li>
+            Každé provedení znamená:<ul>
+                <li><code>KROK</code> (Karel se posune vpřed)</li>
+                <li><code>VLEVO</code> (Karel se otočí vlevo)</li>
+            </ul>
+        </li>
+    </ul>
+    <p>Po skončení cyklu se pokračuje dalším kódem za závorkou.</p>
+    <h3><strong>DOKUD</strong> (cyklus s podmínkou)</h3>
+    <p>Další obvyklá forma je tzv. <strong>podmíněný cyklus</strong>:</p>
+<pre><code><span class="hljs-attribute">DOKUD</span> (VOLNO) {
+    <span class="hljs-attribute">KROK</span>
+}
+</code></pre><ul>
+        <li>Znamená: „Dokud je před Karlem volno, dělej KROK.&quot;</li>
+        <li>Cyklus končí, když podmínka <strong>přestane platit</strong> (např. Karel narazí na zeď nebo okraj mřížky).</li>
+    </ul>
+    <hr>
+    <h2>2.2 Podmínky</h2>
+    <p>Podmínky určují, <strong>zda</strong> se určitý blok příkazů provede. V Karelovi je často klíčové slovo:</p>
+<pre><code><span class="hljs-attribute">POKUD</span> (VOLNO) {
+    <span class="hljs-attribute">KROK</span>
+} JINAK {
+    <span class="hljs-attribute">VLEVO</span>
+}
+</code></pre><ul>
+        <li>Pokud je před Karlem volné pole (není tam zeď), provede se příkaz <code>KROK</code>.</li>
+        <li>Pokud před Karlem <strong>není</strong> volno (podmínka je false), provede se blok v <code>JINAK</code> (<code>VLEVO</code>).</li>
+    </ul>
+    <h3>Běžné podmínky</h3>
+    <ol>
+        <li>
+            <strong>VOLNO</strong><ul>
+                <li>True, pokud na poli před Karlem <strong>není</strong> zeď (ani hranice mapy).</li>
+            </ul>
+        </li>
+        <li>
+            <strong>ZED</strong><ul>
+                <li>True, pokud je před Karlem <strong>zeď</strong> nebo konec mapy.</li>
+            </ul>
+        </li>
+        <li>
+            <strong>ZNACKA</strong><ul>
+                <li>True, pokud je na aktuálním poli značka (beeper).</li>
+            </ul>
+        </li>
+    </ol>
+    <hr>
+    <h2>2.3 Ukázkový příklad kombinace cyklu a podmínky</h2>
+<pre><code><span class="hljs-attribute">OPAKUJ</span> <span class="hljs-number">3</span> {
+    <span class="hljs-attribute">POKUD</span> (VOLNO) {
+    <span class="hljs-attribute">KROK</span>
+    } JINAK {
+    <span class="hljs-attribute">VLEVO</span>
+    }
+}
+</code></pre><ol>
+        <li>Provede se blok uvnitř složených závorek <strong>3×</strong>.</li>
+        <li>
+            <strong>Každé opakování</strong> zkontroluje, zda má Karel před sebou volno:<ul>
+                <li>Pokud <strong>ano</strong> → provede <code>KROK</code>.</li>
+                <li>Pokud <strong>ne</strong> → otočí se vlevo.</li>
+            </ul>
+        </li>
+    </ol>
+    <p>Tím se Karel třikrát pokusí pohnout vpřed (pokud to jde), nebo se místo toho otočí.</p>
+    <hr>
+    <h2>2.4 Syntaxe bloků</h2>
+    <p>V příkladech výše se používají složené závorky <code>{ ... }</code>.</p>
+
+</body>
+</html>

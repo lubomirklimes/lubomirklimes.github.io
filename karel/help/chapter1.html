@@ -1,61 +1,147 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="cs">
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+<meta charset="utf-8" />
+<title>1. Základní příkazy</title>
+<style>
+  :root {
+    --clr-bg: #f8f9fc;
+    --clr-surface: #ffffff;
+    --clr-primary: #0f6cbd;
+    --clr-primary-light: #e8f1fb;
+    --clr-accent: #107c41;
+    --clr-warn: #bc4b08;
+    --clr-border: #d1d9e0;
+    --clr-code-bg: #1e1e2e;
+    --clr-code-fg: #cdd6f4;
+    --clr-kw: #89b4fa;
+    --clr-num: #a6e3a1;
+    --clr-cmt: #6c7086;
+    --radius: 8px;
+    --font: 'Segoe UI', system-ui, sans-serif;
+    --font-mono: 'Cascadia Code', 'Consolas', monospace;
+  }
+  body { font-family: var(--font); background: var(--clr-bg); color: #1a1a2e; margin: 0; padding: 20px 24px 40px; font-size: 15px; line-height: 1.7; }
+  h1 { color: var(--clr-primary); font-size: 1.6rem; margin: 0 0 4px; border-bottom: 3px solid var(--clr-primary); padding-bottom: 8px; }
+  h2 { color: #1a1a2e; font-size: 1.15rem; margin: 28px 0 10px; }
+  h3 { color: var(--clr-primary); font-size: 1rem; margin: 20px 0 6px; }
+  .subtitle { color: #555; margin: 0 0 24px; font-size: 0.95rem; }
+  .card { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 12px; }
+  .cmd { display: flex; align-items: flex-start; gap: 14px; }
+  .cmd-name { background: var(--clr-primary); color: #fff; font-family: var(--font-mono); font-size: 0.9rem; font-weight: 700; padding: 3px 10px; border-radius: 4px; white-space: nowrap; margin-top: 2px; }
+  .cmd-name.green  { background: var(--clr-accent); }
+  .cmd-name.orange { background: var(--clr-warn); }
+  .cmd-body { flex: 1; }
+  .cmd-body p { margin: 0 0 4px; }
+  .cmd-body ul { margin: 4px 0 0 0; padding-left: 20px; }
+  .note { background: var(--clr-primary-light); border-left: 4px solid var(--clr-primary); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin: 12px 0; font-size: 0.92rem; }
+  .warn { background: #fff4ed; border-left: 4px solid var(--clr-warn); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin: 12px 0; font-size: 0.92rem; }
+  pre { background: var(--clr-code-bg); color: var(--clr-code-fg); font-family: var(--font-mono); font-size: 0.9rem; padding: 16px 18px; border-radius: var(--radius); overflow-x: auto; margin: 12px 0; line-height: 1.6; }
+  .kw  { color: var(--clr-kw);  font-weight: bold; }
+  .cmt { color: var(--clr-cmt); font-style: italic; }
+  .num { color: var(--clr-num); }
+  table { border-collapse: collapse; width: 100%; font-size: 0.92rem; margin: 10px 0; }
+  th { background: var(--clr-primary); color: #fff; padding: 8px 12px; text-align: left; }
+  td { padding: 7px 12px; border-bottom: 1px solid var(--clr-border); }
+  tr:nth-child(even) td { background: var(--clr-primary-light); }
+  code { font-family: var(--font-mono); background: #eef2f7; padding: 1px 5px; border-radius: 3px; font-size: 0.88em; }
+  .section-num { display: inline-block; background: var(--clr-primary); color: #fff; border-radius: 50%; width: 26px; height: 26px; text-align: center; line-height: 26px; font-weight: 700; margin-right: 8px; font-size: 0.9rem; }
+</style>
 </head>
 <body>
-    <h1>1. Základní příkazy</h1>
-    <p>
-        <strong>Karel</strong> je malý robot žijící na dvourozměrné mřížce. Umí se pohybovat, otáčet a manipulovat s tzv. <em>značkami</em> (beepery).
-        V našem prostředí se obvykle vykonávají krátké programy psané ve speciálním jazyce Karla. Cílem je na základě několika jednoduchých
-        příkazů a řídicích struktur vyřešit zadanou úlohu (např. obejít překážky, posbírat značky atd.).
-    </p>
-    <hr>
-    <h2>1.1 Pohyb a otáčení</h2>
-    <ol>
-        <li>
-            <p><strong>KROK</strong></p>
-            <ul>
-                <li>Posune Karla o jedno pole vpřed (směrem, kam je otočen).</li>
-                <li>Pokud je před ním zeď nebo okraj mapy, pohyb se neprovede a vyvolá se chyba.</li>
-            </ul>
-        </li>
-        <li>
-            <p><strong>VLEVO</strong></p>
-            <ul>
-                <li>Otočí Karla vlevo (o 90 stupňů).</li>
-            </ul>
-        </li>
-    </ol>
-    <hr>
-    <h2>1.2 Manipulace se značkami (beepery)</h2>
-    <ol>
-        <li>
-            <p><strong>POLOŽ</strong></p>
-            <ul>
-                <li>Položí značku na aktuální pole (pokud má Karel nějakou „u sebe&quot;).</li>
-            </ul>
-        </li>
-        <li>
-            <p><strong>ZVEDNI</strong></p>
-            <ul>
-                <li>Zvedne značku z aktuálního pole (pokud tam nějaká je).</li>
-            </ul>
-        </li>
-    </ol>
-    <p><em>(Značky jsou drobné předměty na poli, které Karel může sbírat nebo pokládat. Často se jim říká „beepery&quot;.)</em></p>
-    <hr>
-    <h2>1.3. Příklad základního kódu</h2>
-    <p>Základní blok kódu Karla může vypadat takto:</p>
-<pre><code><span class="hljs-attribute">KROK</span>
-KROK
-VLEVO
-POLOŽ
-ZVEDNI
-</code></pre><ul>
-        <li>Karel udělá dva kroky vpřed, otočí se vlevo, položí značku a vzápětí ji zvedne.</li>
-        <li>Vše se vyhodnotí nad mapou, kde se kontroluje, jestli Karel nenarazí do zdi a zda na poli byla značka, kterou je možné zvednout.</li>
-    </ul>
+
+<h1>1. Základní příkazy</h1>
+<p class="subtitle">Karel je robot pohybující se na 2D mřížce. Ovládáte ho sadou jednoduchých příkazů.</p>
+
+<h2><span class="section-num">1</span> Struktura programu</h2>
+<p>Každý program začíná klíčovým slovem <code>KAREL</code> a končí klíčovým slovem <code>STOP</code>.
+Procedury se definují <strong>před</strong> blokem <code>KAREL … STOP</code>.</p>
+
+<pre><span class="cmt">// Volitelná definice procedur</span>
+<span class="kw">PROCEDURA</span> MojeAkce {
+    <span class="kw">KROK</span>
+}
+
+<span class="kw">KAREL</span>
+    MojeAkce   <span class="cmt">// volání procedury</span>
+    <span class="kw">KROK</span>
+<span class="kw">STOP</span></pre>
+
+<div class="note">💡 <code>KAREL</code> a <code>STOP</code> jsou nepovinné — program lze psát i bez nich. Komentáře začínají <code>//</code>.</div>
+
+<h2><span class="section-num">2</span> Pohyb a otáčení</h2>
+
+<div class="card">
+  <div class="cmd"><span class="cmd-name">KROK</span>
+    <div class="cmd-body">
+      <p>Posune Karla o jedno pole vpřed (ve směru, kam hledí).</p>
+      <ul><li>Pokud je před ním zeď nebo okraj mřížky → <strong>chyba (havárie)</strong>.</li></ul>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="cmd"><span class="cmd-name">VLEVO</span>
+    <div class="cmd-body"><p>Otočí Karla o 90° doleva.</p></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="cmd"><span class="cmd-name">VPRAVO</span>
+    <div class="cmd-body"><p>Otočí Karla o 90° doprava. Ekvivalent třikrát <code>VLEVO</code>.</p></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="cmd"><span class="cmd-name orange">STOP</span>
+    <div class="cmd-body"><p>Okamžitě ukončí program. Lze použít kdekoli uvnitř programu.</p></div>
+  </div>
+</div>
+
+<h2><span class="section-num">3</span> Práce se značkami</h2>
+<p>Značky (beepery) jsou předměty, které lze pokládat a sbírat. Na jednom poli může ležet více značek.</p>
+
+<div class="card">
+  <div class="cmd"><span class="cmd-name green">POLOŽ</span>
+    <div class="cmd-body">
+      <p>Vezme jednu značku z Karlova batohu a položí ji na aktuální pole.</p>
+      <ul><li>Batoh je na začátku neomezený (∞ značek).</li>
+          <li>Pokud je batoh prázdný → <strong>chyba</strong>.</li></ul>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="cmd"><span class="cmd-name green">ZVEDNI</span>
+    <div class="cmd-body">
+      <p>Zvedne jednu značku z aktuálního pole do Karlova batohu.</p>
+      <ul><li>Pokud na poli žádná značka není → <strong>chyba</strong>.</li></ul>
+    </div>
+  </div>
+</div>
+
+<h2><span class="section-num">4</span> Přehled příkazů</h2>
+<table>
+  <tr><th>Příkaz</th><th>Popis</th><th>Chyba při</th></tr>
+  <tr><td><code>KROK</code></td><td>Pohyb o jedno pole vpřed</td><td>zeď nebo okraj před Karlem</td></tr>
+  <tr><td><code>VLEVO</code></td><td>Otočení o 90° doleva</td><td>—</td></tr>
+  <tr><td><code>VPRAVO</code></td><td>Otočení o 90° doprava</td><td>—</td></tr>
+  <tr><td><code>POLOŽ</code></td><td>Položí značku z batohu</td><td>prázdný batoh</td></tr>
+  <tr><td><code>ZVEDNI</code></td><td>Zvedne značku z pole</td><td>žádná značka na poli</td></tr>
+  <tr><td><code>STOP</code></td><td>Ukončí program</td><td>—</td></tr>
+</table>
+
+<h2><span class="section-num">5</span> Ukázkový program</h2>
+<pre><span class="cmt">// Karel udělá krok, otočí se vpravo, položí značku a zvedne ji</span>
+<span class="kw">KAREL</span>
+    <span class="kw">KROK</span>
+    <span class="kw">VPRAVO</span>
+    <span class="kw">POLOŽ</span>
+    <span class="kw">ZVEDNI</span>
+    <span class="kw">VLEVO</span>
+    <span class="kw">VLEVO</span>   <span class="cmt">// otočení o 180°</span>
+    <span class="kw">KROK</span>
+<span class="kw">STOP</span></pre>
+
 </body>
 </html>

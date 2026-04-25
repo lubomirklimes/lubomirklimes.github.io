@@ -1,90 +1,157 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="cs">
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+<meta charset="utf-8" />
+<title>2. Řídicí struktury</title>
+<style>
+  :root {
+    --clr-bg: #f8f9fc;
+    --clr-surface: #ffffff;
+    --clr-primary: #0f6cbd;
+    --clr-primary-light: #e8f1fb;
+    --clr-accent: #107c41;
+    --clr-warn: #bc4b08;
+    --clr-border: #d1d9e0;
+    --clr-code-bg: #1e1e2e;
+    --clr-code-fg: #cdd6f4;
+    --clr-kw: #89b4fa;
+    --clr-num: #a6e3a1;
+    --clr-cmt: #6c7086;
+    --clr-str: #f38ba8;
+    --radius: 8px;
+    --font: 'Segoe UI', system-ui, sans-serif;
+    --font-mono: 'Cascadia Code', 'Consolas', monospace;
+  }
+  body { font-family: var(--font); background: var(--clr-bg); color: #1a1a2e; margin: 0; padding: 20px 24px 40px; font-size: 15px; line-height: 1.7; }
+  h1 { color: var(--clr-primary); font-size: 1.6rem; margin: 0 0 4px; border-bottom: 3px solid var(--clr-primary); padding-bottom: 8px; }
+  h2 { color: #1a1a2e; font-size: 1.15rem; margin: 28px 0 10px; }
+  h3 { color: var(--clr-primary); font-size: 1rem; margin: 16px 0 6px; }
+  .subtitle { color: #555; margin: 0 0 24px; font-size: 0.95rem; }
+  .card { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 12px; }
+  .note  { background: var(--clr-primary-light); border-left: 4px solid var(--clr-primary); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin: 12px 0; font-size: 0.92rem; }
+  .warn  { background: #fff4ed; border-left: 4px solid var(--clr-warn); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin: 12px 0; font-size: 0.92rem; }
+  pre { background: var(--clr-code-bg); color: var(--clr-code-fg); font-family: var(--font-mono); font-size: 0.9rem; padding: 16px 18px; border-radius: var(--radius); overflow-x: auto; margin: 12px 0; line-height: 1.6; }
+  .kw  { color: var(--clr-kw);  font-weight: bold; }
+  .cmt { color: var(--clr-cmt); font-style: italic; }
+  .num { color: var(--clr-num); }
+  .cond { color: #fab387; font-weight: bold; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.9rem; margin: 10px 0; }
+  th { background: var(--clr-primary); color: #fff; padding: 8px 12px; text-align: left; }
+  td { padding: 7px 12px; border-bottom: 1px solid var(--clr-border); vertical-align: top; }
+  tr:nth-child(even) td { background: var(--clr-primary-light); }
+  .tag { display: inline-block; font-size: 0.75rem; font-weight: 700; padding: 1px 6px; border-radius: 3px; margin-left: 4px; }
+  .tag-pohyb { background: #dbeafe; color: #1d4ed8; }
+  .tag-znacka { background: #dcfce7; color: #166534; }
+  .tag-domov { background: #fef9c3; color: #854d0e; }
+  .tag-smer { background: #fce7f3; color: #9d174d; }
+  code { font-family: var(--font-mono); background: #eef2f7; padding: 1px 5px; border-radius: 3px; font-size: 0.88em; }
+  .section-num { display: inline-block; background: var(--clr-primary); color: #fff; border-radius: 50%; width: 26px; height: 26px; text-align: center; line-height: 26px; font-weight: 700; margin-right: 8px; font-size: 0.9rem; }
+</style>
 </head>
 <body>
-    <h1>2. Řídicí struktury</h1>
-    <p>Karelův jazyk umožňuje používat <strong>cykly</strong> (opakování) a <strong>podmínky</strong>, aby programy byly chytřejší a dokázaly reagovat na situaci ve světě.</p>
-    <h2>2.1 Cykly</h2>
-    <h3><strong>OPAKUJ</strong> (pevný počet opakování)</h3>
-    <p>Syntaxe vypadá takto:</p>
-<pre><code><span class="hljs-attribute">OPAKUJ</span> <span class="hljs-number">5</span> {
-    <span class="hljs-attribute">KROK</span>
-    VLEVO
+
+<h1>2. Řídicí struktury</h1>
+<p class="subtitle">Cykly a podmínky umožňují Karlovi reagovat na situaci v mřížce.</p>
+
+<!-- ==================== OPAKUJ ==================== -->
+<h2><span class="section-num">1</span> OPAKUJ — pevný počet opakování</h2>
+<div class="card">
+<pre><span class="kw">OPAKUJ</span> <span class="num">4</span> {
+    <span class="kw">VLEVO</span>   <span class="cmt">// otočení o 360°</span>
+}</pre>
+<p>Provede blok příkazů přesně <strong>n-krát</strong>. Počet musí být nezáporné celé číslo.</p>
+</div>
+
+<!-- ==================== DOKUD ==================== -->
+<h2><span class="section-num">2</span> DOKUD — podmíněný cyklus</h2>
+<div class="card">
+<pre><span class="kw">DOKUD</span> (<span class="cond">VOLNO</span>) {
+    <span class="kw">KROK</span>   <span class="cmt">// pohyb dokud je před Karlem volno</span>
+}</pre>
+<p>Opakuje blok, <strong>dokud je podmínka pravdivá</strong>. Podmínka se vyhodnocuje <em>před</em> každým průchodem.</p>
+</div>
+<div class="warn">⚠️ Program se automaticky zastaví po <strong>10 000 iteracích</strong>, aby se předešlo nekonečné smyčce.</div>
+
+<!-- ==================== POKUD ==================== -->
+<h2><span class="section-num">3</span> POKUD / JINAK — podmínka</h2>
+<div class="card">
+<pre><span class="kw">POKUD</span> (<span class="cond">ZNACKA</span>) {
+    <span class="kw">ZVEDNI</span>
+} <span class="kw">JINAK</span> {
+    <span class="kw">POLOŽ</span>
+}</pre>
+<p>Větev <code>JINAK</code> je <strong>nepovinná</strong>.</p>
+</div>
+
+<!-- ==================== PODMÍNKY ==================== -->
+<h2><span class="section-num">4</span> Přehled podmínek</h2>
+
+<h3>Pohyb</h3>
+<table>
+  <tr><th>Podmínka</th><th>Pravda, pokud …</th></tr>
+  <tr><td><code>VOLNO</code></td><td>před Karlem je volné pole (není zeď ani okraj)</td></tr>
+  <tr><td><code>ZED</code></td><td>před Karlem je zeď nebo okraj mřížky</td></tr>
+  <tr><td><code>NE_VOLNO</code></td><td>ekvivalent <code>ZED</code></td></tr>
+  <tr><td><code>NE_ZED</code></td><td>ekvivalent <code>VOLNO</code></td></tr>
+</table>
+
+<h3>Značky</h3>
+<table>
+  <tr><th>Podmínka</th><th>Pravda, pokud …</th></tr>
+  <tr><td><code>ZNACKA</code></td><td>Karel stojí na poli se alespoň jednou značkou</td></tr>
+  <tr><td><code>NE_ZNACKA</code></td><td>na aktuálním poli není žádná značka</td></tr>
+  <tr><td><code>MA_ZNACKY</code></td><td>Karel má v batohu alespoň jednu značku</td></tr>
+  <tr><td><code>NE_MA_ZNACKY</code></td><td>Karlův batoh je prázdný</td></tr>
+</table>
+
+<h3>Domov</h3>
+<table>
+  <tr><th>Podmínka</th><th>Pravda, pokud …</th></tr>
+  <tr><td><code>DOMA</code></td><td>Karel stojí na domovské pozici (domeček 🏠)</td></tr>
+  <tr><td><code>NE_DOMA</code></td><td>Karel nestojí na domovské pozici</td></tr>
+</table>
+
+<h3>Směr</h3>
+<table>
+  <tr><th>Podmínka</th><th>Pravda, pokud …</th><th>Negace</th></tr>
+  <tr><td><code>SEVER</code></td><td>Karel hledí na sever (↑)</td><td><code>NE_SEVER</code></td></tr>
+  <tr><td><code>JIH</code></td><td>Karel hledí na jih (↓)</td><td><code>NE_JIH</code></td></tr>
+  <tr><td><code>VYCHOD</code></td><td>Karel hledí na východ (→)</td><td><code>NE_VYCHOD</code></td></tr>
+  <tr><td><code>ZAPAD</code></td><td>Karel hledí na západ (←)</td><td><code>NE_ZAPAD</code></td></tr>
+</table>
+
+<!-- ==================== PŘÍKLADY ==================== -->
+<h2><span class="section-num">5</span> Ukázkové příklady</h2>
+
+<h3>Pohyb podél zdi</h3>
+<pre><span class="kw">DOKUD</span> (<span class="cond">VOLNO</span>) {
+    <span class="kw">KROK</span>
 }
-</code></pre><ul>
-        <li>Provede <strong>5×</strong> blok příkazů uvnitř složených závorek.</li>
-        <li>
-            Každé provedení znamená:<ul>
-                <li><code>KROK</code> (Karel se posune vpřed)</li>
-                <li><code>VLEVO</code> (Karel se otočí vlevo)</li>
-            </ul>
-        </li>
-    </ul>
-    <p>Po skončení cyklu se pokračuje dalším kódem za závorkou.</p>
-    <h3><strong>DOKUD</strong> (cyklus s podmínkou)</h3>
-    <p>Další obvyklá forma je tzv. <strong>podmíněný cyklus</strong>:</p>
-<pre><code><span class="hljs-attribute">DOKUD</span> (VOLNO) {
-    <span class="hljs-attribute">KROK</span>
-}
-</code></pre><ul>
-        <li>Znamená: „Dokud je před Karlem volno, dělej KROK.&quot;</li>
-        <li>Cyklus končí, když podmínka <strong>přestane platit</strong> (např. Karel narazí na zeď nebo okraj mřížky).</li>
-    </ul>
-    <hr>
-    <h2>2.2 Podmínky</h2>
-    <p>Podmínky určují, <strong>zda</strong> se určitý blok příkazů provede. V Karelovi je často klíčové slovo:</p>
-<pre><code><span class="hljs-attribute">POKUD</span> (VOLNO) {
-    <span class="hljs-attribute">KROK</span>
-} JINAK {
-    <span class="hljs-attribute">VLEVO</span>
-}
-</code></pre><ul>
-        <li>Pokud je před Karlem volné pole (není tam zeď), provede se příkaz <code>KROK</code>.</li>
-        <li>Pokud před Karlem <strong>není</strong> volno (podmínka je false), provede se blok v <code>JINAK</code> (<code>VLEVO</code>).</li>
-    </ul>
-    <h3>Běžné podmínky</h3>
-    <ol>
-        <li>
-            <strong>VOLNO</strong><ul>
-                <li>True, pokud na poli před Karlem <strong>není</strong> zeď (ani hranice mapy).</li>
-            </ul>
-        </li>
-        <li>
-            <strong>ZED</strong><ul>
-                <li>True, pokud je před Karlem <strong>zeď</strong> nebo konec mapy.</li>
-            </ul>
-        </li>
-        <li>
-            <strong>ZNACKA</strong><ul>
-                <li>True, pokud je na aktuálním poli značka (beeper).</li>
-            </ul>
-        </li>
-    </ol>
-    <hr>
-    <h2>2.3 Ukázkový příklad kombinace cyklu a podmínky</h2>
-<pre><code><span class="hljs-attribute">OPAKUJ</span> <span class="hljs-number">3</span> {
-    <span class="hljs-attribute">POKUD</span> (VOLNO) {
-    <span class="hljs-attribute">KROK</span>
-    } JINAK {
-    <span class="hljs-attribute">VLEVO</span>
+<span class="kw">VLEVO</span>   <span class="cmt">// otočení po naražení</span></pre>
+
+<h3>Bezpečný krok</h3>
+<pre><span class="kw">POKUD</span> (<span class="cond">VOLNO</span>) {
+    <span class="kw">KROK</span>
+} <span class="kw">JINAK</span> {
+    <span class="kw">VPRAVO</span>
+}</pre>
+
+<h3>Pohyb k domovu</h3>
+<pre><span class="kw">DOKUD</span> (<span class="cond">NE_DOMA</span>) {
+    <span class="kw">POKUD</span> (<span class="cond">VOLNO</span>) {
+        <span class="kw">KROK</span>
+    } <span class="kw">JINAK</span> {
+        <span class="kw">VLEVO</span>
     }
-}
-</code></pre><ol>
-        <li>Provede se blok uvnitř složených závorek <strong>3×</strong>.</li>
-        <li>
-            <strong>Každé opakování</strong> zkontroluje, zda má Karel před sebou volno:<ul>
-                <li>Pokud <strong>ano</strong> → provede <code>KROK</code>.</li>
-                <li>Pokud <strong>ne</strong> → otočí se vlevo.</li>
-            </ul>
-        </li>
-    </ol>
-    <p>Tím se Karel třikrát pokusí pohnout vpřed (pokud to jde), nebo se místo toho otočí.</p>
-    <hr>
-    <h2>2.4 Syntaxe bloků</h2>
-    <p>V příkladech výše se používají složené závorky <code>{ ... }</code>.</p>
+}</pre>
+
+<h3>Sbírání všech značek vpřed</h3>
+<pre><span class="kw">DOKUD</span> (<span class="cond">VOLNO</span>) {
+    <span class="kw">POKUD</span> (<span class="cond">ZNACKA</span>) {
+        <span class="kw">ZVEDNI</span>
+    }
+    <span class="kw">KROK</span>
+}</pre>
 
 </body>
 </html>

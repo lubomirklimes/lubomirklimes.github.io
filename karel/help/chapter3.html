@@ -1,72 +1,182 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="cs">
 <head>
-    <meta charset="utf-8" />
-    <title></title>
+<meta charset="utf-8" />
+<title>3. Procedury</title>
+<style>
+  :root {
+    --clr-bg: #f8f9fc;
+    --clr-surface: #ffffff;
+    --clr-primary: #0f6cbd;
+    --clr-primary-light: #e8f1fb;
+    --clr-accent: #107c41;
+    --clr-warn: #bc4b08;
+    --clr-border: #d1d9e0;
+    --clr-code-bg: #1e1e2e;
+    --clr-code-fg: #cdd6f4;
+    --clr-kw: #89b4fa;
+    --clr-num: #a6e3a1;
+    --clr-cmt: #6c7086;
+    --clr-proc: #cba6f7;
+    --clr-cond: #fab387;
+    --radius: 8px;
+    --font: 'Segoe UI', system-ui, sans-serif;
+    --font-mono: 'Cascadia Code', 'Consolas', monospace;
+  }
+  body { font-family: var(--font); background: var(--clr-bg); color: #1a1a2e; margin: 0; padding: 20px 24px 40px; font-size: 15px; line-height: 1.7; }
+  h1 { color: var(--clr-primary); font-size: 1.6rem; margin: 0 0 4px; border-bottom: 3px solid var(--clr-primary); padding-bottom: 8px; }
+  h2 { color: #1a1a2e; font-size: 1.15rem; margin: 28px 0 10px; }
+  h3 { color: var(--clr-primary); font-size: 1rem; margin: 16px 0 6px; }
+  .subtitle { color: #555; margin: 0 0 24px; font-size: 0.95rem; }
+  .card { background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius); padding: 16px 20px; margin-bottom: 12px; }
+  .note { background: var(--clr-primary-light); border-left: 4px solid var(--clr-primary); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin: 12px 0; font-size: 0.92rem; }
+  .warn { background: #fff4ed; border-left: 4px solid var(--clr-warn); border-radius: 0 var(--radius) var(--radius) 0; padding: 10px 14px; margin: 12px 0; font-size: 0.92rem; }
+  pre { background: var(--clr-code-bg); color: var(--clr-code-fg); font-family: var(--font-mono); font-size: 0.9rem; padding: 16px 18px; border-radius: var(--radius); overflow-x: auto; margin: 12px 0; line-height: 1.6; }
+  .kw   { color: var(--clr-kw);   font-weight: bold; }
+  .proc { color: var(--clr-proc); font-weight: bold; }
+  .cond { color: var(--clr-cond); font-weight: bold; }
+  .cmt  { color: var(--clr-cmt);  font-style: italic; }
+  .num  { color: var(--clr-num); }
+  .steps { counter-reset: step; list-style: none; padding: 0; margin: 0; }
+  .steps li { counter-increment: step; display: flex; gap: 12px; margin-bottom: 10px; }
+  .steps li::before { content: counter(step); background: var(--clr-primary); color: #fff; border-radius: 50%; min-width: 26px; height: 26px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; margin-top: 2px; flex-shrink: 0; }
+  code { font-family: var(--font-mono); background: #eef2f7; padding: 1px 5px; border-radius: 3px; font-size: 0.88em; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.9rem; margin: 10px 0; }
+  th { background: var(--clr-primary); color: #fff; padding: 8px 12px; text-align: left; }
+  td { padding: 7px 12px; border-bottom: 1px solid var(--clr-border); }
+  tr:nth-child(even) td { background: var(--clr-primary-light); }
+  .section-num { display: inline-block; background: var(--clr-primary); color: #fff; border-radius: 50%; width: 26px; height: 26px; text-align: center; line-height: 26px; font-weight: 700; margin-right: 8px; font-size: 0.9rem; }
+  .callout { display: flex; gap: 10px; background: var(--clr-surface); border: 1px solid var(--clr-border); border-radius: var(--radius); padding: 12px 16px; margin: 10px 0; }
+  .callout-icon { font-size: 1.4rem; line-height: 1; }
+</style>
 </head>
 <body>
-    <h1>3. Definice procedur (podprogramů)</h1>
-    <p>
-        Procedury v Karlovi (někdy nazývané také <em>podprogramy</em>) umožňují <strong>seskupit více příkazů</strong> do jednoho pojmenovaného celku.
-        Ten pak můžete <strong>opakovaně volat</strong>. To je užitečné, když se v programu často opakuje stejná série příkazů.
-    </p>
-    <h2>3.1 Základní příklad</h2>
-<pre><code><span class="hljs-attribute">PROCEDURA</span> OTOC_SE {
-    <span class="hljs-attribute">VLEVO</span>
-    VLEVO
-}
-</code></pre><ul>
-        <li>Vytváří proceduru s názvem <code>OTOC_SE</code>.</li>
-        <li>Když se tato procedura zavolá, Karel provede <strong>dva příkazy <code>VLEVO</code></strong> a tím se otočí o 180°.</li>
-    </ul>
-    <hr>
-    <h2>3.2 Volání procedury</h2>
-    <p>Po definici lze proceduru volat jako běžný příkaz:</p>
-<pre><code><span class="hljs-attribute">KROK</span>
-OTOC_SE
-KROK
-</code></pre><ul>
-        <li>Karel udělá krok vpřed, zavolá proceduru <code>OTOC_SE</code> (otočí se o 180°) a udělá další krok.</li>
-    </ul>
-    <hr>
-    <h2>3.3 Struktura definice procedury</h2>
-    <p>Syntaxe definice procedury vypadá  takto:</p>
-<pre><code>PROCEDURA <span class="hljs-params">&lt;jméno&gt;</span> {
-    <span class="hljs-comment">// Blok příkazů</span>
-}
-</code></pre><ul>
-        <li><code>PROCEDURA</code> je klíčové slovo pro definici.</li>
-        <li><code>&lt;jméno&gt;</code> je identifikátor procedury (např. <code>OTOC_SE</code>, <code>POZBIREJ_VSE</code>, ...).</li>
-        <li>Blok obsahuje posloupnost příkazů Karla (KROK, VLEVO, POLOZ, atd.).</li>
-    </ul>
-    <hr>
-    <h2>3.4 Ukázkový delší příklad</h2>
-<pre><code>PROCEDURA <span class="hljs-keyword">OTOC_SE</span> {
-    VLEVO
-    VLEVO
+
+<h1>3. Procedury (podprogramy)</h1>
+<p class="subtitle">Procedury seskupují příkazy do pojmenovaných celků pro přehlednost a znovupoužití.</p>
+
+<!-- ==================== DEFINICE ==================== -->
+<h2><span class="section-num">1</span> Definice procedury</h2>
+
+<div class="card">
+<pre><span class="kw">PROCEDURA</span> <span class="proc">OtocVpravo</span> {
+    <span class="kw">VLEVO</span>
+    <span class="kw">VLEVO</span>
+    <span class="kw">VLEVO</span>
+}</pre>
+<ul class="steps">
+  <li><code>PROCEDURA</code> — klíčové slovo zahajující definici</li>
+  <li><code>OtocVpravo</code> — jméno (identifikátor); libovolný název bez mezer</li>
+  <li><code>{ … }</code> — tělo procedury (libovolná sada příkazů)</li>
+</ul>
+</div>
+
+<div class="note">💡 <strong>VPRAVO</strong> je dnes vestavěný příkaz, takže tuto proceduru není potřeba psát — slouží jen jako ukázka.</div>
+
+<!-- ==================== VOLÁNÍ ==================== -->
+<h2><span class="section-num">2</span> Volání procedury</h2>
+
+<div class="card">
+<pre><span class="kw">KAREL</span>
+    <span class="kw">KROK</span>
+    <span class="proc">OtocVpravo</span>   <span class="cmt">// zavolá proceduru</span>
+    <span class="kw">KROK</span>
+<span class="kw">STOP</span></pre>
+<p>Proceduru voláte jejím jménem jako běžný příkaz.</p>
+</div>
+
+<!-- ==================== POŘADÍ ==================== -->
+<h2><span class="section-num">3</span> Pořadí definic a volání</h2>
+
+<div class="callout">
+  <div class="callout-icon">✅</div>
+  <div>Procedury mohou být definovány <strong>kdekoli</strong> v programu — před i za blokem <code>KAREL … STOP</code>. Interpret nejprve přečte všechny definice a teprve pak spustí hlavní program.</div>
+</div>
+
+<pre><span class="kw">KAREL</span>
+    <span class="proc">Pozdrav</span>   <span class="cmt">// OK – definice je níže, ale funguje to</span>
+<span class="kw">STOP</span>
+
+<span class="kw">PROCEDURA</span> <span class="proc">Pozdrav</span> {
+    <span class="kw">KROK</span>
+    <span class="kw">VLEVO</span>
+}</pre>
+
+<!-- ==================== REKURZE ==================== -->
+<h2><span class="section-num">4</span> Rekurze</h2>
+
+<p>Procedura může volat sama sebe (rekurze):</p>
+
+<pre><span class="kw">PROCEDURA</span> <span class="proc">JdiDomov</span> {
+    <span class="kw">POKUD</span> (<span class="cond">NE_DOMA</span>) {
+        <span class="kw">POKUD</span> (<span class="cond">VOLNO</span>) {
+            <span class="kw">KROK</span>
+        } <span class="kw">JINAK</span> {
+            <span class="kw">VLEVO</span>
+        }
+        <span class="proc">JdiDomov</span>   <span class="cmt">// rekurzivní volání</span>
+    }
+}</pre>
+
+<div class="warn">⚠️ Program se zastaví po <strong>100 úrovních</strong> rekurze, aby se předešlo přetečení zásobníku.</div>
+
+<!-- ==================== VELKÝ PŘÍKLAD ==================== -->
+<h2><span class="section-num">5</span> Kompletní ukázka</h2>
+
+<pre><span class="cmt">// Procedury definované před hlavním programem</span>
+
+<span class="kw">PROCEDURA</span> <span class="proc">BezpecnyKrok</span> {
+    <span class="kw">POKUD</span> (<span class="cond">VOLNO</span>) {
+        <span class="kw">KROK</span>
+    }
 }
 
-<span class="hljs-keyword">PROCEDURA</span> <span class="hljs-keyword">OBKROKNI</span> {
-    KROK
-    VLEVO
-    KROK
-    VLEVO
+<span class="kw">PROCEDURA</span> <span class="proc">OtocDokola</span> {
+    <span class="kw">OPAKUJ</span> <span class="num">4</span> {
+        <span class="kw">VLEVO</span>
+    }
 }
 
-    <span class="hljs-keyword">OPAKUJ</span> 2 {
-    OBKROKNI
-    OTOC_SE
-  }
-</code></pre><ul>
-        <li>Definujeme dvě procedury: <code>OTOC_SE</code> a <code>OBKROKNI</code>.</li>
-        <li>
-            V hlavním programu se dvakrát opakuje volání:<ol>
-                <li><code>OBKROKNI</code> (tj. krok, vlevo, krok, vlevo)</li>
-                <li><code>OTOC_SE</code> (otočení o 180°)</li>
-            </ol>
-        </li>
-    </ul>
-    <p>Takto se kód stává <strong>přehlednějším</strong>. Kdyby se tytéž příkazy opakovaly v programu vícekrát, stačí je vepsat do procedury a volat ji podle potřeby.</p>
+<span class="kw">PROCEDURA</span> <span class="proc">SberZnacku</span> {
+    <span class="kw">POKUD</span> (<span class="cond">ZNACKA</span>) {
+        <span class="kw">ZVEDNI</span>
+    }
+}
+
+<span class="cmt">// Hlavní program</span>
+<span class="kw">KAREL</span>
+
+    <span class="cmt">// pohyb vpřed, bezpečně</span>
+    <span class="kw">OPAKUJ</span> <span class="num">3</span> {
+        <span class="proc">BezpecnyKrok</span>
+        <span class="proc">SberZnacku</span>
+    }
+
+    <span class="cmt">// pohyb k domovu</span>
+    <span class="kw">DOKUD</span> (<span class="cond">NE_DOMA</span>) {
+        <span class="kw">POKUD</span> (<span class="cond">VOLNO</span>) {
+            <span class="kw">KROK</span>
+        } <span class="kw">JINAK</span> {
+            <span class="kw">VPRAVO</span>
+        }
+    }
+
+    <span class="proc">OtocDokola</span>
+
+<span class="kw">STOP</span></pre>
+
+<!-- ==================== PŘEHLED ==================== -->
+<h2><span class="section-num">6</span> Pravidla procedur — přehled</h2>
+<table>
+  <tr><th>Vlastnost</th><th>Hodnota</th></tr>
+  <tr><td>Klíčové slovo</td><td><code>PROCEDURA</code></td></tr>
+  <tr><td>Parametry</td><td>nepodporované</td></tr>
+  <tr><td>Návratová hodnota</td><td>žádná</td></tr>
+  <tr><td>Pořadí definice vs. volání</td><td>libovolné (dvoufázový průchod)</td></tr>
+  <tr><td>Rekurze</td><td>✅ povolena, limit 100 úrovní</td></tr>
+  <tr><td>Vnoření (procedura volá proceduru)</td><td>✅ povoleno</td></tr>
+  <tr><td>Přepsání procedury</td><td>✅ nová definice přepíše předchozí</td></tr>
+</table>
 
 </body>
 </html>

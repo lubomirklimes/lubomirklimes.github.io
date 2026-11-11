@@ -73,7 +73,7 @@ Neměňte velikost seznamu nebo slovníku během průchodu tímto objektem. Filt
 
 Comprehension vytvoří seznam hned; generátorový výraz poskytuje hodnoty až na vyžádání a je jednorázový. `sum(n * n for n in range(10))` nepotřebuje pomocný seznam, ale samotný výpočet stále provede. To neznamená, že každý generátor bude rychlejší.
 
-Výkon závisí na operaci a vstupu. Pokud na něm záleží, změřte jej; viz [Profilování](../J/Profiling.md).
+Výkon závisí na operaci a vstupu. Pokud na něm záleží, změřte jej; viz [Profilování](../D/Profiling.md).
 
 </details>
 
